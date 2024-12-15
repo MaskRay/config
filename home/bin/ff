@@ -96,8 +96,9 @@ def main():
             if args.run < 0:
                 print(f'{lineno:^2} {line}')
             if not args.n:
-                if os.system(line) != 0:
-                    sys.exit(1)
+                ret = os.system(line)
+                if ret != 0:
+                    sys.exit(ret)
             if args.run == lineno:
                 if (idx := line.find('|')) >= 0:
                     line = line[:idx]
