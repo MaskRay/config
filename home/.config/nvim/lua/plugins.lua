@@ -242,7 +242,8 @@ local on_attach = function(client, bufnr)
     vim.treesitter.stop(bufnr)
   end
 end
-local servers = {'ccls', 'lua_ls', 'marksman', 'nimls', 'pyright', 'rust_analyzer'}
+
+local servers = {'ccls', 'lua_ls', 'marksman', 'mlir_lsp_server', 'nimls', 'pyright', 'rust_analyzer', 'tblgen_lsp_server'}
 for _, lsp in ipairs(servers) do
   local options = {
     on_attach = on_attach,
