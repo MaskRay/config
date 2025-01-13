@@ -116,6 +116,7 @@
   insteadOf = gh:
 [core]
 	quotePath = false
+	pager = /usr/share/git/diff-highlight/diff-highlight| less
 [http]
         #proxy = http://192.168.8.2:3128
         #proxy = http://192.168.7.85:3128
