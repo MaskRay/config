@@ -462,13 +462,13 @@ myKeys =
     , ("M-b", promote)
     , ("M-d", toggleCopyToAll)
     , ("M-S-f", placeFocused $ withGaps (22, 0, 0, 0) $ smart (0.5,0.5))
-    , ("M-C-m", withFocused (sendMessage . MergeAll))
+    -- , ("M-C-m", withFocused (sendMessage . MergeAll))
     , ("M-C-u", withFocused (sendMessage . UnMerge))
     , ("M-z m", windows W.focusMaster)
     , ("M-z u", focusUrgent)
     , ("M-S-b", banishScreen LowerRight)
 
-    , ("M-g", windows W.focusDown)
+    --, ("M-g", windows W.focusDown)
 
     ----- Utility
 
@@ -541,7 +541,7 @@ myKeys =
     , ("M-y t", spawn "rofi -sort -sorting-method fzf -show file -modi file:\"rofi-file-browser /tmp\"")
     , ("M-y v", spawn "pavucontrol")
     , ("M-y m", spawn "menu")
-    ] ++
+    ]
     searchBindings
 
 --alacritty prog = ("alacritty -t "++) . ((++) . head $ words prog) . (" -e '"++) . (prog++) $ "'"
@@ -579,7 +579,7 @@ myConfig xmobar = docks . dynamicProjects myProjects . withNavigation2DConfig my
     , handleEventHook    = myHandleEventHook -- <+> focusFollow -- >> clockEventHook
     , logHook            = historyHook >> myDynamicLog xmobar
     , startupHook        = checkKeymap (myConfig xmobar) myKeys >> spawn "~/bin/start-tiling" >> setWMName "LG3D"
-} `additionalKeysP` myKeys
+} `removeKeysP` ["M-m"] `additionalKeysP` myKeys
 
 myPromptKeymap = M.union defaultXPKeymap $ M.fromList
                  [
